@@ -7,7 +7,42 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" RequestedTheme="Light">
+        <CommandBar Background="DarkViolet" RequestedTheme="Dark">
+            
+            <!--Basic File Commands-->
+            
+            <AppBarButton x:Name="newButton" Icon="Edit" Label="New" Click="newButton_Click" />
+            <AppBarButton x:Name="openButton" Icon="OpenFile" Label="Open" />
+            <AppBarButton x:Name="saveButton" Icon="Save" Label="Save" />
+            
+            <AppBarSeparator/>
+            
+            <!--Emphasis Types-->
+            
+            <AppBarButton x:Name="boldButton" Icon="Bold" Label="Strong" ToolTipService.ToolTip="Strong emphasis"/>
+            <AppBarButton x:Name="italicsButton" Icon="Italic" Label="Subtle" ToolTipService.ToolTip="Subtle emphasis"/>
 
+            <AppBarSeparator/>
+            
+            <!--Insertions-->
+            
+            <AppBarButton x:Name="headingButton" Icon="Setting" Label="Heading" ToolTipService.ToolTip="Insert header"/>
+            <AppBarButton x:Name="imageButton" Icon="Pictures" Label="Image" ToolTipService.ToolTip="Insert image from URL"/>
+            <AppBarButton x:Name="videoButton" Icon="Video" Label="Video" ToolTipService.ToolTip="Insert video embed"/>
+            <AppBarButton x:Name="urlButton" Icon="Link" Label="Hyperlink" ToolTipService.ToolTip="Insert hyperlink"/>
+            <AppBarButton x:Name="tableButton" Icon="ViewAll" Label="Table" ToolTipService.ToolTip="Insert table"/>
+
+            <CommandBar.SecondaryCommands>
+                <AppBarButton x:Name="jekyllButton" Icon="ContactInfo" Label="Insert Jekyll Properties" ToolTipService.ToolTip="Insert template information like Author, Layout, Date, and Title."/>
+                <AppBarButton x:Name="aboutButton" Icon="Favorite" Label="About Jadey" />
+            </CommandBar.SecondaryCommands>
+
+            <CommandBar.Content>
+                <TextBlock Text="Jadey" FontSize="22" Margin="12,9" ToolTipService.ToolTip="Hi, Jaeden!"/>
+            </CommandBar.Content>
+        </CommandBar>
+        <TextBox Margin="0,48,0,0" x:Name="mdDocView" TextWrapping="Wrap" ScrollViewer.VerticalScrollBarVisibility="Auto" BorderThickness="0" AcceptsReturn="True">
+        </TextBox>
     </Grid>
 </Page>
