@@ -13,36 +13,48 @@
             <!--Basic File Commands-->
             
             <AppBarButton x:Name="newButton" Icon="Edit" Label="New" Click="newButton_Click" />
-            <AppBarButton x:Name="openButton" Icon="OpenFile" Label="Open" />
-            <AppBarButton x:Name="saveButton" Icon="Save" Label="Save" />
+            <AppBarButton x:Name="openButton" Icon="OpenFile" Label="Open" Click="openButton_ClickAsync" />
+            <AppBarButton x:Name="saveButton" Icon="Save" Label="Save" Click="saveButton_ClickAsync" />
             
             <AppBarSeparator/>
             
             <!--Emphasis Types-->
             
-            <AppBarButton x:Name="boldButton" Icon="Bold" Label="Strong" ToolTipService.ToolTip="Strong emphasis"/>
-            <AppBarButton x:Name="italicsButton" Icon="Italic" Label="Subtle" ToolTipService.ToolTip="Subtle emphasis"/>
+            <AppBarButton x:Name="boldButton" Icon="Bold" Label="Strong" ToolTipService.ToolTip="Strong emphasis" Click="boldButton_Click"/>
+            <AppBarButton x:Name="italicsButton" Icon="Italic" Label="Subtle" ToolTipService.ToolTip="Subtle emphasis" Click="italicsButton_Click"/>
 
             <AppBarSeparator/>
             
             <!--Insertions-->
-            
-            <AppBarButton x:Name="headingButton" Icon="Setting" Label="Heading" ToolTipService.ToolTip="Insert header"/>
+
+            <AppBarButton x:Name="headingButton" Icon="Setting" Label="Heading" ToolTipService.ToolTip="Insert header">
+                <Button.Flyout>
+                    <MenuFlyout>
+                        <MenuFlyoutItem x:Name="headingAMenu" Text="Heading 1" Click="headingAMenu_Click" />
+                        <MenuFlyoutItem x:Name="headingBMenu" Text="Heading 2" Click="headingBMenu_Click" />
+                        <MenuFlyoutItem x:Name="headingCMenu" Text="Heading 3" Click="headingCMenu_Click" />
+                        <MenuFlyoutSeparator/>
+                        <MenuFlyoutItem x:Name="headingDMenu" Text="Heading 4" Click="headingDMenu_Click" />
+                        <MenuFlyoutItem x:Name="headingEMenu" Text="Heading 5" Click="headingEMenu_Click" />
+                        <MenuFlyoutItem x:Name="headingFMenu" Text="Heading 6" Click="headingFMenu_Click" />
+                    </MenuFlyout>
+                </Button.Flyout>
+            </AppBarButton>
             <AppBarButton x:Name="imageButton" Icon="Pictures" Label="Image" ToolTipService.ToolTip="Insert image from URL"/>
             <AppBarButton x:Name="videoButton" Icon="Video" Label="Video" ToolTipService.ToolTip="Insert video embed"/>
             <AppBarButton x:Name="urlButton" Icon="Link" Label="Hyperlink" ToolTipService.ToolTip="Insert hyperlink"/>
             <AppBarButton x:Name="tableButton" Icon="ViewAll" Label="Table" ToolTipService.ToolTip="Insert table"/>
 
             <CommandBar.SecondaryCommands>
-                <AppBarButton x:Name="jekyllButton" Icon="ContactInfo" Label="Insert Jekyll Properties" ToolTipService.ToolTip="Insert template information like Author, Layout, Date, and Title."/>
-                <AppBarButton x:Name="aboutButton" Icon="Favorite" Label="About Jadey" />
+                <AppBarButton x:Name="jekyllButton" Icon="ContactInfo" Label="Insert Jekyll Properties" ToolTipService.ToolTip="Insert template information like Author, Layout, Date, and Title." Click="jekyllButton_Click"/>
+                <AppBarButton x:Name="aboutButton" Icon="Favorite" Label="About Jadey" Click="aboutButton_Click" />
             </CommandBar.SecondaryCommands>
 
             <CommandBar.Content>
                 <TextBlock Text="Jadey" FontSize="22" Margin="12,9" ToolTipService.ToolTip="Hi, Jaeden!"/>
             </CommandBar.Content>
         </CommandBar>
-        <TextBox Margin="0,48,0,0" x:Name="mdDocView" TextWrapping="Wrap" ScrollViewer.VerticalScrollBarVisibility="Auto" BorderThickness="0" AcceptsReturn="True">
+        <TextBox Margin="0,48,0,0" x:Name="mdDocView"  x:FieldModifier="public" TextWrapping="Wrap" ScrollViewer.VerticalScrollBarVisibility="Auto" BorderThickness="0" AcceptsReturn="True" TextChanged="mdDocView_TextChanged">
         </TextBox>
     </Grid>
 </Page>

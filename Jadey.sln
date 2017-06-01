@@ -5,6 +5,11 @@ VisualStudioVersion = 15.0.26430.6
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jadey", "Jadey\Jadey.csproj", "{ED039125-09BB-44F9-8113-CF1D7F2F2BED}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{B4B79E67-CD8A-40BF-88C4-0DCD33378CEB}"
+	ProjectSection(SolutionItems) = preProject
+		Markdown.cs = Markdown.cs
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|ARM = Debug|ARM
