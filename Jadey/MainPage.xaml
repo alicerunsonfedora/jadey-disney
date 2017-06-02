@@ -8,13 +8,13 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" RequestedTheme="Light">
-        <CommandBar Background="DarkViolet" RequestedTheme="Dark">
+        <CommandBar Background="#B146C2" RequestedTheme="Dark">
             
             <!--Basic File Commands-->
             
-            <AppBarButton x:Name="newButton" Icon="Edit" Label="New" Click="newButton_Click" />
+            <AppBarButton x:Name="newButton" Icon="Edit" Label="New" Click="newButton_ClickAsync" />
             <AppBarButton x:Name="openButton" Icon="OpenFile" Label="Open" Click="openButton_ClickAsync" />
-            <AppBarButton x:Name="saveButton" Icon="Save" Label="Save" Click="saveButton_ClickAsync" />
+            <AppBarButton x:Name="saveButton" Icon="Save" Label="Save" Click="SaveButton_ClickAsync" />
             
             <AppBarSeparator/>
             
@@ -27,7 +27,7 @@
             
             <!--Insertions-->
 
-            <AppBarButton x:Name="headingButton" Icon="Setting" Label="Heading" ToolTipService.ToolTip="Insert header">
+            <AppBarButton x:Name="headingButton" Icon="OutlineStar" Label="Heading" ToolTipService.ToolTip="Insert header">
                 <Button.Flyout>
                     <MenuFlyout>
                         <MenuFlyoutItem x:Name="headingAMenu" Text="Heading 1" Click="headingAMenu_Click" />
@@ -40,10 +40,34 @@
                     </MenuFlyout>
                 </Button.Flyout>
             </AppBarButton>
-            <AppBarButton x:Name="imageButton" Icon="Pictures" Label="Image" ToolTipService.ToolTip="Insert image from URL"/>
+            <!--<AppBarButton x:Name="imageButton" Icon="Pictures" Label="Image" ToolTipService.ToolTip="Insert image from URL">
+                <Button.Flyout>
+                    <Flyout LightDismissOverlayMode="On">
+                        <StackPanel x:Name="ImageFlyout" Orientation="Vertical" Padding="0">
+                            <TextBlock Text="Enter Image Link" Margin="0,2"/>
+                            <MenuFlyoutSeparator></MenuFlyoutSeparator>
+                            <TextBox x:Name="imageName" PlaceholderText="Name of Image" Margin="0,2" MinWidth="256"/>
+                            <TextBox x:Name="imageURL" PlaceholderText="Image URL" Margin="0,2" MinWidth="256"/>
+                            <Button x:Name="insertImage" Content="Insert Image" HorizontalAlignment="Center" Margin="4,4" Click="insertImage_Click"></Button>
+                        </StackPanel>
+                    </Flyout>
+                </Button.Flyout>
+            </AppBarButton>
             <AppBarButton x:Name="videoButton" Icon="Video" Label="Video" ToolTipService.ToolTip="Insert video embed"/>
-            <AppBarButton x:Name="urlButton" Icon="Link" Label="Hyperlink" ToolTipService.ToolTip="Insert hyperlink"/>
-            <AppBarButton x:Name="tableButton" Icon="ViewAll" Label="Table" ToolTipService.ToolTip="Insert table"/>
+            <AppBarButton x:Name="urlButton" Icon="Link" Label="Hyperlink" ToolTipService.ToolTip="Insert hyperlink">
+                <Button.Flyout>
+                    <Flyout LightDismissOverlayMode="On">
+                        <StackPanel x:Name="LinkFlyout" Orientation="Vertical" Padding="0">
+                            <TextBlock Text="Enter Link" Margin="0,2"/>
+                            <MenuFlyoutSeparator></MenuFlyoutSeparator>
+                            <TextBox x:Name="linkName" PlaceholderText="Name of URL" Margin="0,2" MinWidth="256" Text="Bing"/>
+                            <TextBox x:Name="linkURL" PlaceholderText="URL" Margin="0,2" MinWidth="256" InputScope="Url" Text="http://www.bing.com"/>
+                            <Button x:Name="insertLink" Content="Insert URL" HorizontalAlignment="Center" Margin="4,4" Click="insertLink_Click"></Button>
+                        </StackPanel>
+                    </Flyout>
+                </Button.Flyout>
+            </AppBarButton>
+            <AppBarButton x:Name="tableButton" Icon="ViewAll" Label="Table" ToolTipService.ToolTip="Insert table"/>-->
 
             <CommandBar.SecondaryCommands>
                 <AppBarButton x:Name="jekyllButton" Icon="ContactInfo" Label="Insert Jekyll Properties" ToolTipService.ToolTip="Insert template information like Author, Layout, Date, and Title." Click="jekyllButton_Click"/>
@@ -54,7 +78,7 @@
                 <TextBlock Text="Jadey" FontSize="22" Margin="12,9" ToolTipService.ToolTip="Hi, Jaeden!"/>
             </CommandBar.Content>
         </CommandBar>
-        <TextBox Margin="0,48,0,0" x:Name="mdDocView"  x:FieldModifier="public" TextWrapping="Wrap" ScrollViewer.VerticalScrollBarVisibility="Auto" BorderThickness="0" AcceptsReturn="True" TextChanged="mdDocView_TextChanged">
+        <TextBox Margin="0,48,0,0" x:Name="mdDocView"  x:FieldModifier="public" TextWrapping="Wrap" ScrollViewer.VerticalScrollBarVisibility="Auto" BorderThickness="0" AcceptsReturn="True" TextChanged="mdDocView_TextChanged" PlaceholderText="">
         </TextBox>
     </Grid>
 </Page>

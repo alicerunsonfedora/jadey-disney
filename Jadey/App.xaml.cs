@@ -76,8 +76,8 @@ namespace Jadey
             }
 
             var view = ApplicationView.GetForCurrentView();
-            view.TitleBar.BackgroundColor = Colors.DarkViolet;
-            view.TitleBar.ButtonBackgroundColor = Colors.DarkViolet;
+            view.TitleBar.BackgroundColor = Color.FromArgb(1, 177, 70, 194);
+            view.TitleBar.ButtonBackgroundColor = Color.FromArgb(1, 177, 70, 194);
             view.TitleBar.ForegroundColor = Colors.White;
         }
 

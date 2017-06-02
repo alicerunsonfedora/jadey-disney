@@ -33,6 +33,7 @@ namespace Jadey
     public partial class MainPage : Page
     {
         string mdDocContents { get; set; }
+        string mdDocKuraberu { get; set; }
         string fileName { get; set; }
         ApplicationView titleBar = ApplicationView.GetForCurrentView();
 
@@ -49,15 +50,45 @@ namespace Jadey
         /// <param name="sender"></param>
         /// <param name="e"></param>
 
-        private void newButton_Click(object sender, RoutedEventArgs e)
+        private async void newButton_ClickAsync(object sender, RoutedEventArgs e)
         {
-            mdDocView.Text = "";
+            mdDocKuraberu = mdDocView.Text;
+            if (mdDocKuraberu != "" || mdDocKuraberu != mdDocContents)
+            {
+                ContentDialog subscribeDialog = new ContentDialog
+                {
+                    Title = "Continue without saving?",
+                    Content = "Are you sure you want to make a new document without saving this one first?",
+                    CloseButtonText = "Cancel",
+                    PrimaryButtonText = "Yes",
+                    SecondaryButtonText = "Save first",
+                    DefaultButton = ContentDialogButton.Primary
+                };
+
+                ContentDialogResult result = await subscribeDialog.ShowAsync();
+
+                switch(result)
+                {
+                    case ContentDialogResult.Primary:
+                        mdDocView.Text = "";
+                        break;
+
+                    case ContentDialogResult.Secondary:
+                        saveFile();
+                        mdDocView.Text = "";
+                        break;
+                    default:
+                        break;
+                }
+                    
+
+            }
             
         }
 
         private void mdDocView_TextChanged(object sender, RoutedEventArgs e)
         {
-            var mdDocKuraberu = mdDocView.Text;
+            mdDocKuraberu = mdDocView.Text;
             if (mdDocContents != mdDocKuraberu)
             {
                 if (titleBar.Title == fileName)
@@ -78,7 +109,7 @@ namespace Jadey
             {
                 Title = "About Jadey",
                 Content = "Jadey 1.0.0\n(C) 2017 | Marquis Kurt\nLicensed under GNU GPL v3.",
-                CloseButtonText = "Dismiss"
+                CloseButtonText = "Dismiss",
             };
 
             ContentDialogResult result = await aboutDialog.ShowAsync();
@@ -116,7 +147,12 @@ namespace Jadey
             }
         }
 
-        private async void saveButton_ClickAsync(object sender, RoutedEventArgs e)
+        private void SaveButton_ClickAsync(object sender, RoutedEventArgs e)
+        {
+            saveFile();
+        }
+
+        public async void saveFile()
         {
             var fileContents = mdDocView.Text;
 
@@ -282,6 +318,22 @@ namespace Jadey
                 mdDocView.Text = jekyllLayout + "\n";
             }
         }
+        
+
+        /*private void insertLink_Click(object sender, RoutedEventArgs e)
+        {
+            var linkNameText = linkName.Text;
+            var linkURLText = linkURL.Text;
+            mdDocView.SelectedText = "[" + linkNameText + "](" + linkURLText + ")";
+        }
+        
+
+        private void insertImage_Click(object sender, RoutedEventArgs e)
+        {
+            var imgText = imageName.Text;
+            var imgUrl = imageURL.Text;
+            mdDocView.SelectedText = "![" + imgText + "](" + imgUrl + ")";
+        }*/
         #endregion
     }
 }
