@@ -1,4 +1,4 @@
-# Jadey
+# Jadey for Windows 10 (Codename "Disney")
 An open-source UWP Markdown editor for Windows 10
 ![Jadey 1.0](https://farm5.staticflickr.com/4234/34211911124_9f022b6410_o_d.png)
 
